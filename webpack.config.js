@@ -21,6 +21,10 @@ module.exports={
 			// 	// loader:'babel-loader?preset[]=es2015'  第一张方法告诉babel用哪种转码器转
 			// 	exclude:/node_module/  //表示node_module里面所有的.js文件不转换
 			// },
+            {
+                test: /vue-preview.src.*?js$/,//配置vue-preview插件
+                loader: 'babel-loader'
+            },
 			{
 		        test: /\.js$/,
 		        loader: 'babel-loader',
@@ -38,7 +42,7 @@ module.exports={
 				loader:'vue-loader'
 			},
 			 {
-		        test: /\.(png|jpg|ttf)$/,  //匹配文件后缀名  png和jpg 和ttf文件
+		        test: /\.(png|jpg|ttf|svg|gif)$/,  //匹配文件后缀名  png和jpg 和ttf文件
 		        loader: 'url-loader?limit=40000'  //url就是url-loader的缩写，limit的参数，当你图片大小小于这个限制的时候，会自动启用base64编码图片，大于这个参数的时候就会打包到文件夹中，大小不变，哈希值，防止重名
 		        // 注意limit的值不能太大不然会影响build的文件大小，影响性能
 		      }

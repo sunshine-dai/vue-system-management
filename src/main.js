@@ -11,6 +11,9 @@ import 'mint-ui/lib/style.min.css';
 import '../statics/mui/css/mui.css';
 import '../statics/mui/css/icons-extra.css';
 // import '../statics/mui/js/mui.min.js'
+// 导入VuePreview
+import VuePreview from 'vue-preview'
+
 
 //导入css文件
 import '../statics/css/sites.css';
@@ -23,13 +26,16 @@ import search from './components/search/search.vue';
 import newslist from './components/news/newslist.vue';
 import newsinfo from './components/news/newsinfo.vue';
 import photolist from './components/photo/photolist.vue'
-
+import photoinfo from './components/photo/info.vue'
 
 //2在Vue中加载vue-router
 Vue.use(vueRouter);
 Vue.use(vueResource); //使用vue-resource对象  才能在vue对象实例上挂在$http
 // 定义共有过滤器   tolowercase1过滤器名字  必须定义在main.js里面
 Vue.use(mintUi);
+// 使用VuePreview
+Vue.use(VuePreview)
+
 
 //全局过滤器格式化时间
 import moment from 'moment'
@@ -52,7 +58,7 @@ let router = new vueRouter({
         { name: 'newslist', path: '/news/newslist', component: newslist },
         { name: 'newsinfo', path: '/news/newsinfo/:id', component: newsinfo },
         { name: 'photolist', path: '/photo/photolist', component: photolist},//图片分享
-
+        { name: 'photoinfo', path: '/photo/info/:id', component:photoinfo},
 
     ]
 });

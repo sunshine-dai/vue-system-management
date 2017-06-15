@@ -2,9 +2,11 @@
     <div class="tmpl">
         <div class="title">
             <h4>{{article.title}}</h4>
-            <span>{{article.add_time|fmtdate('YYYY-MM-DD')}}</span>
-            <span>{{article.click}}次浏览</span>
-            <span>分类:经济民生</span>
+           <div class="time">
+               <span>{{article.add_time|fmtdate('YYYY-MM-DD HH-mm-ss')}}</span>
+               <span>{{article.click}}次浏览</span>
+               <span>分类:经济民生</span>
+           </div>
         </div>
         <div v-html="article.content" class="content">
 
@@ -53,15 +55,18 @@
         height:100px;
         border-bottom:2px solid #b6b6b6;
         padding:5px;
+        position: relative;
     }
     .title h4{
         font-style: 20px;
     }
-    .title span{
-        position: relative;;
-        bottom:-20px;
-        font-style: 12px;
+    .time span{
+        font-size: 14px;
         color:#b6b6b6;
+    }
+    .time{
+        position: absolute;
+        bottom:0px;
     }
     .content{
         padding:5px;

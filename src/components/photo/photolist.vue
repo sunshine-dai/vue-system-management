@@ -14,10 +14,12 @@
         <!--图片列表区域-->
             <ul class="photolist">
                 <li v-for="item in list">
-                    <img v-lazy="item.img_url">
+                    <router-link v-bind='{to:"/photo/info/"+item.id}'>
+                        <img v-lazy="item.img_url">
+                    </router-link>
                     <div class="imgdescribe">
                         <p>{{item.title}}</p>
-                        <span>{{item.zhaiyao}}</span>
+                        <span v-text="item.zhaiyao"></span>
                     </div>
                 </li>
             </ul>
