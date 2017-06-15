@@ -2,6 +2,9 @@
     <div class="app">
        <!--整个项目的头部-->
         <mt-header fixed title="vue管理系统"></mt-header>
+        <div class="back">
+            <a @click="goback" v-show="isShow">返回</a>
+        </div>
          <!--路由占位，将来所有的组件都是替换整个位置实现跳转-->
         <router-view></router-view>
         <!--整个项目的底部-->
@@ -29,12 +32,41 @@
     export default {
         data(){
             return {
+                isShow:false,
+            }
+        },
+//        created(){
+////            当前app.vue加载页面完毕后触发
+//                this.isShow=false;
+//
+//        },
+        watch:{
+            //        监控当前页面的url是否是home，如果是就不显示返回，如果不是就加上返回
+            '$route':function(val,oldval){
+                if(val.path=='/Home'){
+                    this.isShow=false;
+                }else{
+                    this.isShow=true;
+                }
 
             }
         },
-
+        methods:{
+            goback(){
+                this.$router.go(-1);
+            }
+        }
     }
 </script>
-<style>
-    
+<style scoped>
+    .back{
+        position:fixed;
+        top:10px;
+        left:10px;
+        z-index:50;
+    }
+    .back a{
+        font-style: 16px;
+        color: #fff;
+    }
 </style>
